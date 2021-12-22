@@ -11,18 +11,17 @@ module.exports = {
         if (target && target.includes("<@")) {
             const id = target.replace(/[\\<>@#&!]/g, "")
 
-            if (message.guild.members.search(id)) {
-                const configuration = require("../config.json")
-                const member = client.users.fetch(id)
+            const configuration = require("../config.json")
+            const member = message.guild.members.fetch(id)
 
-                member.then(function (result1) {
-                    const embed = new Discord.MessageEmbed()
-                        .setTitle(`${result1.username}'s Avatar`)
-                        .setThumbnail(`https://cdn.discordapp.com/avatars/${result1.id}/${result1.avatar}.png?size=1024`)
+            member.then(function (result) {
+                console.log(`${result.username}, ${result.avatar}, ${result.id}`)
+                const embed = new Discord.MessageEmbed()
+                    .setTitle(`${result.username}'s Avatar`)
+                    .setImage(`https://cdn.discordapp.com/avatars/${id}/${result.avatar}.png?size=1024`)
 
-                    message.channel.send(embed);
-                })
-            }
+                message.channel.send({ embeds: [embed] });
+            })
         } else {
             message.channel.send("Invalid arguments ``y!avatar {target}``")
         }
