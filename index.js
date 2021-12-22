@@ -34,6 +34,11 @@ Client.on('message', (msg) => {
         Client.commands.get("ping").execute(Client, msg, args)
     }
 
+    // Kick Command
+    if (cmd == "kick") {
+        Client.commands.get("kick").execute(Client, msg, args)
+    }
+
     // Ban Command
     if (cmd == "ban") {
         Client.commands.get("ban").execute(Client, msg, args)
@@ -42,6 +47,11 @@ Client.on('message', (msg) => {
     // Avatar Command
     if (cmd == "avatar") {
         Client.commands.get("avatar").execute(Client, msg, args)
+    }
+
+    // 8ball
+    if (cmd == "8ball") {
+        Client.commands.get("8ball").execute(Client, msg, args)
     }
 })
 
