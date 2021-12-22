@@ -12,7 +12,6 @@ module.exports = {
                 const target = args[0].replace(/[\\<>@#&!]/g, "")
 
                 message.guild.members.ban(target)
-                console.log("Banned")
             } else {
                 message.channel.send("Invalid arguments ``y!ban {target}``")
             }
