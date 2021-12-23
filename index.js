@@ -53,6 +53,21 @@ Client.on('message', (msg) => {
     if (cmd == "8ball") {
         Client.commands.get("8ball").execute(Client, msg, args)
     }
+
+    // Flip
+    if (cmd == "flip") {
+        Client.commands.get("flip").execute(Client, msg, args)
+    }
+
+    // Feedback
+    if (cmd == "feedback") {
+        Client.commands.get("feedback").execute(Client, msg, args);
+    }
+
+    // Ship
+    if (cmd == "ship") {
+        Client.commands.get("ship").execute(Client, msg, args);
+    }
 })
 
 Client.login(Configuration.token);
