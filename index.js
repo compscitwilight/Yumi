@@ -18,7 +18,10 @@ Client.on('ready', () => {
     console.log(`${Client.user.username} is now online!`);
 
     // Configuring the bot once it goes online
-    Client.user.setStatus(Configuration.customStatus);
+    Client.user.setStatus("idle")
+    Client.user.setActivity(`${Client.guilds.cache.size} servers`, {
+        type: "WATCHING"
+    })
 });
 
 Client.on('message', (msg) => {
@@ -27,50 +30,9 @@ Client.on('message', (msg) => {
     const args = msg.content.slice(Configuration.prefix.length).split(/ +/);
     const cmd = args.shift().toLowerCase();
 
-    // Info Command
-    if (cmd == "info") {
-        Client.commands.get("info").execute(Client, msg, args);
-    }
+    if (!Client.commands.has(cmd)) return;
 
-    // Ping command
-    if (cmd == "ping") {
-        Client.commands.get("ping").execute(Client, msg, args)
-    }
-
-    // Kick Command
-    if (cmd == "kick") {
-        Client.commands.get("kick").execute(Client, msg, args)
-    }
-
-    // Ban Command
-    if (cmd == "ban") {
-        Client.commands.get("ban").execute(Client, msg, args)
-    }
-
-    // Avatar Command
-    if (cmd == "avatar") {
-        Client.commands.get("avatar").execute(Client, msg, args)
-    }
-
-    // 8ball Command
-    if (cmd == "8ball") {
-        Client.commands.get("8ball").execute(Client, msg, args)
-    }
-
-    // Flip Command
-    if (cmd == "flip") {
-        Client.commands.get("flip").execute(Client, msg, args)
-    }
-
-    // Feedback Command
-    if (cmd == "feedback") {
-        Client.commands.get("feedback").execute(Client, msg, args);
-    }
-
-    // Ship Command
-    if (cmd == "ship") {
-        Client.commands.get("ship").execute(Client, msg, args);
-    }
+    Client.commands.get(cmd).execute(Client, msg, args)
 })
 
 Client.login(Configuration.token);
