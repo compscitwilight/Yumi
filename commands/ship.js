@@ -32,7 +32,6 @@ module.exports = {
 
             let rnd = Math.floor(Math.random() * 100);
             const firstint = Number(String(rnd).charAt(0));
-            console.log(firstint);
 
             const response = `
             <@${author}> x <@${user}>
