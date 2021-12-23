@@ -19,8 +19,6 @@ Client.on('ready', () => {
 
     // Configuring the bot once it goes online
     Client.user.setStatus(Configuration.customStatus);
-
-
 });
 
 Client.on('message', (msg) => {
@@ -28,6 +26,11 @@ Client.on('message', (msg) => {
 
     const args = msg.content.slice(Configuration.prefix.length).split(/ +/);
     const cmd = args.shift().toLowerCase();
+
+    // Info Command
+    if (cmd == "info") {
+        Client.commands.get("info").execute(Client, msg, args);
+    }
 
     // Ping command
     if (cmd == "ping") {
@@ -49,22 +52,22 @@ Client.on('message', (msg) => {
         Client.commands.get("avatar").execute(Client, msg, args)
     }
 
-    // 8ball
+    // 8ball Command
     if (cmd == "8ball") {
         Client.commands.get("8ball").execute(Client, msg, args)
     }
 
-    // Flip
+    // Flip Command
     if (cmd == "flip") {
         Client.commands.get("flip").execute(Client, msg, args)
     }
 
-    // Feedback
+    // Feedback Command
     if (cmd == "feedback") {
         Client.commands.get("feedback").execute(Client, msg, args);
     }
 
-    // Ship
+    // Ship Command
     if (cmd == "ship") {
         Client.commands.get("ship").execute(Client, msg, args);
     }
