@@ -33,6 +33,19 @@ module.exports = {
             let rnd = Math.floor(Math.random() * 100);
             const firstint = Number(String(rnd).charAt(0));
 
+            if (rnd < 10) {
+                const lttResponse = `
+                <@${author}> x <@${user}>
+    
+                **${rnd}%**
+                ${emojiVariations[0]}
+                `
+
+                message.channel.send(lttResponse)
+
+                return;
+            }
+
             const response = `
             <@${author}> x <@${user}>
 
@@ -42,7 +55,11 @@ module.exports = {
 
             message.channel.send(response)
         } else {
-            message.channel.send("Invalid arguments ``y!ship {target}``");
+            if (args[0].includes("<@")) {
+                message.channel.send("Please tag someone!");
+            } else {
+                message.channel.send("Invalid arguments ``y!ship {target}``");
+            }
         }
     }
 }
