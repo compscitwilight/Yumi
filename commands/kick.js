@@ -9,9 +9,10 @@ module.exports = {
 
         if (args[0]) {
             const target = args[0].replace(/[\\<>@#&!]/g, "")
+            const reason = args.slice(1).join(" ");
 
             if (user.permissions.has(Discord.Permissions.FLAGS.KICK_MEMBERS)) {
-                message.guild.members.kick(target);
+                message.guild.members.kick(target, { reason: reason });
 
                 message.channel.send(`<@${user.id}> Successfully kicked <@${target}>`)
             } else {
