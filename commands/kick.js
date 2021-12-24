@@ -19,7 +19,7 @@ module.exports = {
                 message.channel.send(`<@${user.id}> You are not allowed to run that command! Missing permission(s) KICK_MEMBERS`)
             }
         } else {
-            message.channel.send("Invalid arguments ``y!kick {target}``")
+            message.channel.send("Invalid arguments ``y!kick {target} {reason}``")
         }
     }
 }
